@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' nodemon server.js",
     "format:write": "prettier --write .",
     "format:check": "prettier --check .",
     "lint:check": "eslint ./*.js",

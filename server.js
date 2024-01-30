@@ -32,12 +32,19 @@ app.get("/", (req, res) => {
 });
 
 app.get("/create", async (req, res) => {
-  await client.query(`CREATE TABLE Candidate { 
-    Id SERIAL PRIMARY KEY, 
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(500),
-    City varchar(255)}`);
+  try {
+    await client.query(`CREATE TABLE Candidate {
+      Id SERIAL PRIMARY KEY,
+      LastName varchar(255),
+      FirstName varchar(255),
+      Address varchar(500),
+      City varchar(255)}`);
+  } catch (ex) {
+    console.log("exception", ex);
+  }
+  res.status(200).json({
+    status: "Success",
+  });
 });
 
 app.listen(port, () => {
